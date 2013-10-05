@@ -1,11 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Configuration;
-using System.Data;
-using System.Linq;
-using System.Threading.Tasks;
-using System.Windows;
+﻿using System.Windows;
 using System.Windows.Threading;
+using Elysium;
+using Gestur.Core.Wpf.Exceptions;
+using Gestur.wpf.client.BootStrapper;
 using Gestur.wpf.client.ExceptionNotifier.ViewModel;
 
 namespace Gestur.wpf.client
@@ -13,19 +10,13 @@ namespace Gestur.wpf.client
   /// <summary>
   /// Interaction logic for App.xaml
   /// </summary>
-  public partial class App : Application
+  public partial class App
   {
     public App()
     {
       ShutdownMode = ShutdownMode.OnExplicitShutdown;
     }
 
-    private void BootStrapper(object sender, StartupEventArgs e)
-    {
-      var boot = new eDirectoryBootStrapper();
-      boot.Run();
-      Shutdown();
-    }
 
     protected override void OnStartup(StartupEventArgs e)
     {
@@ -43,7 +34,17 @@ namespace Gestur.wpf.client
     {
       e.Handled = true;
       if (e.Exception is SuspendProcessException) { return; }
+// ReSharper disable ObjectCreationAsStatement
       new ExceptionNotifierViewModel(e.Exception);
+// ReSharper restore ObjectCreationAsStatement
+    }
+
+    private void App_OnStartup(object sender, StartupEventArgs e)
+    {
+      var boot = new AppBootStrapper();
+      boot.Run();
+      this.Apply(Theme.Dark);
+      Shutdown();
     }
   }
 }

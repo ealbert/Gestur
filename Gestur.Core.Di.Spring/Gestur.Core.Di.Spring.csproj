@@ -50,6 +50,10 @@
       <Project>{93d6bc0a-e46a-4702-9172-38b97049d4fb}</Project>
       <Name>Gestur.Core</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Gesture.Server.Domain\Gesture.Server.Domain.csproj">
+      <Project>{7DF83F32-702C-4C2F-8D8F-75726F7476FB}</Project>
+      <Name>Gesture.Server.Domain</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

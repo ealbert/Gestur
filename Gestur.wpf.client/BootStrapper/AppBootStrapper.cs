@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Gestur.Core.Di.Spring;
+using Gestur.wpf.client.UI.Main;
 using Spring.Context.Support;
 
 namespace Gestur.wpf.client.BootStrapper
@@ -15,7 +16,8 @@ namespace Gestur.wpf.client.BootStrapper
     public void Run()
     {
       InitialiseDependencies();
-      
+      var viewModel = new MainViewModel();
+
     }
 
     private void InitialiseDependencies()

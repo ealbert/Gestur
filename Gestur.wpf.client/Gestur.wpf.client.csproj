@@ -36,8 +36,21 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="AutoMapper, Version=3.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\AutoMapper.3.0.0\lib\net40\AutoMapper.dll</HintPath>
+    </Reference>
+    <Reference Include="AutoMapper.Net4">
+      <HintPath>..\packages\AutoMapper.3.0.0\lib\net40\AutoMapper.Net4.dll</HintPath>
+    </Reference>
     <Reference Include="Common.Logging">
       <HintPath>..\packages\Common.Logging.1.2.0\lib\1.0\Common.Logging.dll</HintPath>
+    </Reference>
+    <Reference Include="Elysium">
+      <HintPath>..\packages\Elysium.Theme.2.0.4\lib\net45\Elysium.dll</HintPath>
+    </Reference>
+    <Reference Include="Hardcodet.Wpf.TaskbarNotification">
+      <HintPath>..\libs\TaskbarNotification\Hardcodet.Wpf.TaskbarNotification.dll</HintPath>
     </Reference>
     <Reference Include="MahApps.Metro">
       <HintPath>..\packages\MahApps.Metro.0.10.1.1\lib\net45\MahApps.Metro.dll</HintPath>
@@ -48,6 +61,9 @@
     <Reference Include="System" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Windows.Interactivity">
       <HintPath>..\packages\MahApps.Metro.0.10.1.1\lib\net45\System.Windows.Interactivity.dll</HintPath>
     </Reference>
@@ -67,12 +83,18 @@
     <ApplicationDefinition Include="App.xaml">
       <Generator>MSBuild:Compile</Generator>
     </ApplicationDefinition>
+    <Compile Include="Services\BusinessExceptionManager.cs" />
+    <Compile Include="Services\BusinessWarningManager.cs" />
+    <Compile Include="Services\ClientServiceLocator.cs" />
+    <Compile Include="Services\DirectCommandDispatcher.cs" />
+    <Compile Include="Services\ServiceAdapter.cs" />
+    <Compile Include="Services\Wcf\WcfCommandDispatcher.cs" />
+    <Compile Include="UI\Main\MainViewModel.cs" />
+    <Compile Include="UI\Main\MainWindow.xaml.cs">
+      <DependentUpon>MainWindow.xaml</DependentUpon>
+    </Compile>
     <Page Include="ExceptionNotifier\View\ExceptionNotifierView.xaml">
       <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="MainWindow.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
     </Page>
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
@@ -83,10 +105,10 @@
     <Compile Include="ExceptionNotifier\View\ExceptionNotifierView.xaml.cs">
       <DependentUpon>ExceptionNotifierView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="MainWindow.xaml.cs">
-      <DependentUpon>MainWindow.xaml</DependentUpon>
-      <SubType>Code</SubType>
-    </Compile>
+    <Page Include="UI\Main\MainWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs">
@@ -117,16 +139,30 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Resources\Icons\Warning.ico" />
+    <None Include="Resources\Icons\Warning.ico">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\Images\Exception.png" />
     <Resource Include="Resources\Images\Warning.png" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Gestur.Client.Common\Gestur.Client.Common.csproj">
+      <Project>{d04acb6c-2444-4d12-9ab6-fbfe97087b5f}</Project>
+      <Name>Gestur.Client.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Gestur.Client.Domain\Gestur.Client.Domain.csproj">
+      <Project>{3e847528-5f46-4f7d-bcb3-0d06f2c1cdd0}</Project>
+      <Name>Gestur.Client.Domain</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Gestur.Core.Di.Spring\Gestur.Core.Di.Spring.csproj">
       <Project>{96f2fd32-8efa-4c2d-82df-2f25ea0ae326}</Project>
       <Name>Gestur.Core.Di.Spring</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Gestur.Core.Persistance\Gestur.Core.Persistance.csproj">
+      <Project>{adc93ae8-c05a-4ded-a9c2-9fb29325877d}</Project>
+      <Name>Gestur.Core.Persistance</Name>
     </ProjectReference>
     <ProjectReference Include="..\Gestur.Core.Wpf\Gestur.Core.Wpf.csproj">
       <Project>{9E908580-C1F9-4D67-ADFB-15A1014015B5}</Project>
@@ -136,9 +172,22 @@
       <Project>{93D6BC0A-E46A-4702-9172-38B97049D4FB}</Project>
       <Name>Gestur.Core</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Gestur.Naive\Gestur.Naive.csproj">
+      <Project>{cd580ed8-cb88-438a-99b8-846feb32da3a}</Project>
+      <Name>Gestur.Naive</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Gesture.Server.Domain\Gesture.Server.Domain.csproj">
+      <Project>{7df83f32-702c-4c2f-8d8f-75726f7476fb}</Project>
+      <Name>Gesture.Server.Domain</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Dashboard\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="InMemoryConfiguration.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />

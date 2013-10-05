@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{93D6BC0A-E46A-4702-9172-38B97049D4FB}</ProjectGuid>
+    <ProjectGuid>{7DF83F32-702C-4C2F-8D8F-75726F7476FB}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Gestur.Core</RootNamespace>
-    <AssemblyName>Gestur.Core</AssemblyName>
+    <RootNamespace>Gestur.Server.Domain</RootNamespace>
+    <AssemblyName>Gestur.Server.Domain</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -31,9 +31,8 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
-    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
-    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -41,22 +40,27 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DependencyInjection\IContainer.cs" />
-    <Compile Include="Message\BusinessException.cs" />
-    <Compile Include="Message\BusinessExceptionDto.cs" />
-    <Compile Include="Message\BusinessExceptionEnum.cs" />
-    <Compile Include="Message\BusinessWarning.cs" />
-    <Compile Include="Message\BusinessWarningEnum.cs" />
-    <Compile Include="Message\DataErrorInfo.cs" />
-    <Compile Include="Message\DtoBase.cs" />
-    <Compile Include="Message\DtoResponse.cs" />
-    <Compile Include="Message\IBusinessExceptionManager.cs" />
-    <Compile Include="Message\IBusinessWarningManager.cs" />
-    <Compile Include="Message\ICommandDispatcher.cs" />
-    <Compile Include="Message\IDtoResponseEnvelop.cs" />
-    <Compile Include="Message\Response.cs" />
-    <Compile Include="Message\ValidatorDtoBase.cs" />
+    <Compile Include="AppServices\BusinessNotifier.cs" />
+    <Compile Include="AppServices\Container.cs" />
+    <Compile Include="AppServices\GlobalContext.cs" />
+    <Compile Include="AppServices\IBusinessNotifier.cs" />
+    <Compile Include="AppServices\IGlobalContext.cs" />
+    <Compile Include="AppServices\IRequestContext.cs" />
+    <Compile Include="AppServices\WcfRequestContext\InstanceCreationAttribute.cs" />
+    <Compile Include="AppServices\WcfRequestContext\InstanceCreationExtension.cs" />
+    <Compile Include="AppServices\WcfRequestContext\InstanceCreationInitializer.cs" />
+    <Compile Include="AppServices\WcfRequestContext\RequestContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Gestur.Core.Persistance\Gestur.Core.Persistance.csproj">
+      <Project>{ADC93AE8-C05A-4DED-A9C2-9FB29325877D}</Project>
+      <Name>Gestur.Core.Persistance</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Gestur.Core\Gestur.Core.csproj">
+      <Project>{93D6BC0A-E46A-4702-9172-38B97049D4FB}</Project>
+      <Name>Gestur.Core</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

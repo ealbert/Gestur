@@ -2,6 +2,7 @@
 
 
 using Gestur.Core.DependencyInjection;
+using Gestur.Server.Domain.AppServices;
 using Spring.Context.Support;
 
 namespace Gestur.Core.Di.Spring
@@ -14,5 +15,7 @@ namespace Gestur.Core.Di.Spring
     {
       AppContext = new XmlApplicationContext(configFile);
     }
+
+    public static IRequestContext RequestContext { get; set; }
   }
 }

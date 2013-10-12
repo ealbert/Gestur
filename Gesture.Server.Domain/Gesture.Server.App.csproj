@@ -7,8 +7,8 @@
     <ProjectGuid>{7DF83F32-702C-4C2F-8D8F-75726F7476FB}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Gestur.Server.Domain</RootNamespace>
-    <AssemblyName>Gestur.Server.Domain</AssemblyName>
+    <RootNamespace>Gestur.Server.App</RootNamespace>
+    <AssemblyName>Gestur.Server.App</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -51,8 +51,14 @@
     <Compile Include="AppServices\WcfRequestContext\InstanceCreationInitializer.cs" />
     <Compile Include="AppServices\WcfRequestContext\RequestContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\ServiceBase.cs" />
+    <Compile Include="Services\VisitService.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Gestur.Client.Common\Gestur.Client.Common.csproj">
+      <Project>{D04ACB6C-2444-4D12-9AB6-FBFE97087B5F}</Project>
+      <Name>Gestur.Client.Common</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Gestur.Core.Persistance\Gestur.Core.Persistance.csproj">
       <Project>{ADC93AE8-C05A-4DED-A9C2-9FB29325877D}</Project>
       <Name>Gestur.Core.Persistance</Name>

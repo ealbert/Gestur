@@ -7,6 +7,6 @@ namespace Gestur.Client.Common.Dto
     public long Id { get; set; }
     public String Street { get; set; }
     public String PostalCode { get; set; }
-    public String City { get; set; }        
+    public String City { get; set; }
   }
 }

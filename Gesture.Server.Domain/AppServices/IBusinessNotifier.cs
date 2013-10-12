@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using Gestur.Core.Message;
 
-namespace Gestur.Server.Domain.AppServices
+namespace Gestur.Server.App.AppServices
 {
     /// <remarks>
     /// version 0.5 Chapter V: Service Locator

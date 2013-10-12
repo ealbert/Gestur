@@ -1,9 +1,8 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using Gestur.Core.Message;
 using Gestur.Core.Persistance.Repository;
-using ValidatorDtoBase = Gestur.Core.Message.ValidatorDtoBase;
 
-namespace Gestur.Client.Domain.Entities
+namespace Gestur.Server.Domain.Entities
 {
   public abstract class EntityBase
     : IEntity

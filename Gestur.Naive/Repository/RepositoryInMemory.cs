@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using Gestur.Client.Domain.Entities;
 using Gestur.Core.Persistance.Repository;
 using System.Reflection;
+using Gestur.Server.Domain.Entities;
 
 namespace Gestur.Naive.Repository
 {

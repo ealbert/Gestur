@@ -2,7 +2,7 @@
 
 
 using Gestur.Core.DependencyInjection;
-using Gestur.Server.Domain.AppServices;
+using Gestur.Server.App.AppServices;
 using Spring.Context.Support;
 
 namespace Gestur.Core.Di.Spring

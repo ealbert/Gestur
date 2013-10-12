@@ -3,7 +3,7 @@ using AutoMapper;
 using Gestur.Client.Common.Dto;
 using Gestur.Core.Persistance.Repository;
 
-namespace Gestur.Client.Domain.Entities
+namespace Gestur.Server.Domain.Entities
 {
   public class Address : EntityBase
   {

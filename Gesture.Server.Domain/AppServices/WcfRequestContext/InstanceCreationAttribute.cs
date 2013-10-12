@@ -3,7 +3,7 @@ using System.ServiceModel.Channels;
 using System.ServiceModel.Description;
 using System.ServiceModel.Dispatcher;
 
-namespace Gestur.Server.Domain.AppServices.WcfRequestContext
+namespace Gestur.Server.App.AppServices.WcfRequestContext
 {
     public class InstanceCreationAttribute : Attribute, IContractBehavior
     {

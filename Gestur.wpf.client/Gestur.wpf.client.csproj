@@ -16,6 +16,9 @@
     <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
     <RestorePackages>true</RestorePackages>
   </PropertyGroup>
+  <PropertyGroup>
+    <targetplatformversion>8.0</targetplatformversion>
+  </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
@@ -62,6 +65,8 @@
     <Reference Include="System.Configuration" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime" />
+    <Reference Include="System.Runtime.InteropServices.WindowsRuntime" />
     <Reference Include="System.ServiceModel" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Windows.Interactivity">
@@ -75,6 +80,7 @@
     <Reference Include="System.Xaml">
       <RequiredTargetFramework>4.0</RequiredTargetFramework>
     </Reference>
+    <Reference Include="Windows" />
     <Reference Include="WindowsBase" />
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
@@ -83,12 +89,14 @@
     <ApplicationDefinition Include="App.xaml">
       <Generator>MSBuild:Compile</Generator>
     </ApplicationDefinition>
+    <Compile Include="Models\VisitModel.cs" />
     <Compile Include="Services\BusinessExceptionManager.cs" />
     <Compile Include="Services\BusinessWarningManager.cs" />
     <Compile Include="Services\ClientServiceLocator.cs" />
     <Compile Include="Services\DirectCommandDispatcher.cs" />
     <Compile Include="Services\ServiceAdapter.cs" />
     <Compile Include="Services\Wcf\WcfCommandDispatcher.cs" />
+    <Compile Include="UI\Main\MainModel.cs" />
     <Compile Include="UI\Main\MainViewModel.cs" />
     <Compile Include="UI\Main\MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
@@ -105,6 +113,10 @@
     <Compile Include="ExceptionNotifier\View\ExceptionNotifierView.xaml.cs">
       <DependentUpon>ExceptionNotifierView.xaml</DependentUpon>
     </Compile>
+    <Page Include="Resources\Templates\GestureStyles.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="UI\Main\MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -152,9 +164,9 @@
       <Project>{d04acb6c-2444-4d12-9ab6-fbfe97087b5f}</Project>
       <Name>Gestur.Client.Common</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Gestur.Client.Domain\Gestur.Client.Domain.csproj">
+    <ProjectReference Include="..\Gestur.Client.Domain\Gestur.Server.Domain.csproj">
       <Project>{3e847528-5f46-4f7d-bcb3-0d06f2c1cdd0}</Project>
-      <Name>Gestur.Client.Domain</Name>
+      <Name>Gestur.Server.Domain</Name>
     </ProjectReference>
     <ProjectReference Include="..\Gestur.Core.Di.Spring\Gestur.Core.Di.Spring.csproj">
       <Project>{96f2fd32-8efa-4c2d-82df-2f25ea0ae326}</Project>
@@ -176,9 +188,9 @@
       <Project>{cd580ed8-cb88-438a-99b8-846feb32da3a}</Project>
       <Name>Gestur.Naive</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Gesture.Server.Domain\Gesture.Server.Domain.csproj">
+    <ProjectReference Include="..\Gesture.Server.Domain\Gesture.Server.App.csproj">
       <Project>{7df83f32-702c-4c2f-8d8f-75726f7476fb}</Project>
-      <Name>Gesture.Server.Domain</Name>
+      <Name>Gesture.Server.App</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
@@ -188,8 +200,14 @@
     <Content Include="InMemoryConfiguration.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Resource Include="Resources\Images\girl_96.png" />
+    <Resource Include="Resources\Images\male_96.png" />
   </ItemGroup>
+  <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '11.0' ">
+    <VisualStudioVersion>11.0</VisualStudioVersion>
+  </PropertyGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!--<Import Project="$(MSBuildExtensionsPath)\Microsoft\WindowsXaml\v$(VisualStudioVersion)\Microsoft.Windows.UI.Xaml.CSharp.targets" />-->
   <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

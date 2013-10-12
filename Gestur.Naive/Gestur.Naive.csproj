@@ -47,9 +47,9 @@
     <Compile Include="TransManager\TransManagerInMemory.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Gestur.Client.Domain\Gestur.Client.Domain.csproj">
+    <ProjectReference Include="..\Gestur.Client.Domain\Gestur.Server.Domain.csproj">
       <Project>{3e847528-5f46-4f7d-bcb3-0d06f2c1cdd0}</Project>
-      <Name>Gestur.Client.Domain</Name>
+      <Name>Gestur.Server.Domain</Name>
     </ProjectReference>
     <ProjectReference Include="..\Gestur.Core.Persistance\Gestur.Core.Persistance.csproj">
       <Project>{ADC93AE8-C05A-4DED-A9C2-9FB29325877D}</Project>
@@ -59,9 +59,9 @@
       <Project>{93d6bc0a-e46a-4702-9172-38b97049d4fb}</Project>
       <Name>Gestur.Core</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Gesture.Server.Domain\Gesture.Server.Domain.csproj">
+    <ProjectReference Include="..\Gesture.Server.Domain\Gesture.Server.App.csproj">
       <Project>{7DF83F32-702C-4C2F-8D8F-75726F7476FB}</Project>
-      <Name>Gesture.Server.Domain</Name>
+      <Name>Gesture.Server.App</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

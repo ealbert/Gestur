@@ -1,4 +1,4 @@
-﻿namespace Gestur.Server.Domain.AppServices
+﻿namespace Gestur.Server.App.AppServices
 {
     public interface IRequestContext
     {

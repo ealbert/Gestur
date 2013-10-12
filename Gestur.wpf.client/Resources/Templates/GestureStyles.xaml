@@ -1,0 +1,22 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:models="clr-namespace:Gestur.wpf.client.Models">
+
+  <DataTemplate x:Key="VisitSummaryTemplate" DataType="models:VisitModel">
+    <Grid Height="110" Margin="10">
+      <Grid.ColumnDefinitions>
+        <ColumnDefinition Width="Auto"/>
+        <ColumnDefinition Width="*"/>
+      </Grid.ColumnDefinitions>
+      <Border Width="110" Height="110">
+        <Image Source="{Binding PatientImage}" Stretch="UniformToFill" AutomationProperties.Name="{Binding Id}"/>
+      </Border>
+      <StackPanel Grid.Column="1" VerticalAlignment="Top" Margin="10,0,0,0">
+        <TextBlock x:Name="Name" Text="{Binding PatientTitle}" TextWrapping="NoWrap" FontSize="22" FontWeight="Bold"/>
+        <TextBlock x:Name="DateVisitTitle" Text="Date/Time Visit" TextWrapping="NoWrap" FontSize="16"/>
+        <TextBlock x:Name="DateVisit" Text="{Binding DateTitle}" TextWrapping="NoWrap" FontSize="16"/>
+        <TextBlock x:Name="TimeVisit" Text="{Binding TimeTitle}" MaxHeight="60" FontSize="16"/>
+        <TextBlock x:Name="Address" Text="{Binding AddressTitle}" MaxHeight="60" FontSize="16" FontStyle="Italic"/>
+      </StackPanel>
+    </Grid>
+  </DataTemplate> 
+</ResourceDictionary>

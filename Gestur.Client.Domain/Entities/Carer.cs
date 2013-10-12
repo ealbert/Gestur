@@ -1,12 +1,8 @@
-﻿using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using AutoMapper;
+﻿using AutoMapper;
 using Gestur.Client.Common.Dto;
 using Gestur.Core.Persistance.Repository;
 
-namespace Gestur.Client.Domain.Entities
+namespace Gestur.Server.Domain.Entities
 {
   public class Carer : EntityBase
   {

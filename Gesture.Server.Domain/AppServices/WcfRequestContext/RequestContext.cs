@@ -1,6 +1,6 @@
 ﻿using System.ServiceModel;
 
-namespace Gestur.Server.Domain.AppServices.WcfRequestContext
+namespace Gestur.Server.App.AppServices.WcfRequestContext
 {
     public class RequestContext
         : IRequestContext

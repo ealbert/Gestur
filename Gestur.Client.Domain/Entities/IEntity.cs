@@ -1,4 +1,4 @@
-﻿namespace Gestur.Client.Domain.Entities
+﻿namespace Gestur.Server.Domain.Entities
 {
   public interface IEntity
   {

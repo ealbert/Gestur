@@ -50,7 +50,7 @@
   <!-- Global Context -->
   <object
           id="GlobalContextRef"
-          type="Gestur.Server.Domain.AppServices.GlobalContext, Gestur.Server.Domain"
+          type="Gestur.Server.App.AppServices.GlobalContext, Gestur.Server.App"
           factory-method="Instance"
           singleton="true">
 
@@ -65,7 +65,7 @@
   <!-- AutoMapper -->
   <object
           id="AutoMapperConfiguratorRef"
-          type="Gestur.Client.Domain.Entities.AutoMapperConfigurator, Gestur.Client.Domain"
+          type="Gestur.Server.Domain.Entities.AutoMapperConfigurator, Gestur.Server.Domain"
           init-method="Install" />
 
 </objects>

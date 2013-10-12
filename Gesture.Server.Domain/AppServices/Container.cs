@@ -1,4 +1,4 @@
-﻿namespace Gestur.Server.Domain.AppServices
+﻿namespace Gestur.Server.App.AppServices
 {
     /// <remarks>
     /// version 0.71 Context Re-Factor

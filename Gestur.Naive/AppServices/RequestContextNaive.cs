@@ -1,4 +1,4 @@
-﻿using Gestur.Server.Domain.AppServices;
+﻿using Gestur.Server.App.AppServices;
 
 namespace Gestur.Naive.AppServices
 {

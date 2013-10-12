@@ -1,7 +1,7 @@
 ﻿using Gestur.Core.Message;
 using Gestur.Core.Persistance.TransManager;
 using Gestur.Naive.Repository;
-using Gestur.Server.Domain.AppServices;
+using Gestur.Server.App.AppServices;
 
 namespace Gestur.Naive.TransManager
 {

@@ -1,7 +1,7 @@
 ﻿using System;
 using Gestur.Core.Persistance.TransManager;
 
-namespace Gestur.Server.Domain.AppServices
+namespace Gestur.Server.App.AppServices
 {   
     public class GlobalContext
         : IGlobalContext
